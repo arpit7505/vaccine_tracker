@@ -133,13 +133,12 @@ class FindSlot:
     def sendMail(self, body):
         try:
 
-            self.mailServer.login('uanywhere813@gmail.com', 'use@2021')
+            self.mailServer.login('<sender e-mail>', '<sender-pass>')
             sub = 'Vaccine Slot Available Update'
 
             message = "Subject : {}\n\n{}".format(sub, body)
 
-            self.mailServer.sendmail('rishusingh7505@gmail.com',
-                                     ['singhraunak773@gmail.com', 'rishusingh7505@gmail.com'], message)
+            self.mailServer.sendmail('from address', 'lis of to addresses', message)
 
             print('sent ..')
             self.mailServer.quit()
