@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block body%}
+
+<div class="container">
+    <div>
+        <button id="pcode" onclick="collapse('collapse1')" class="btn btn-outline-light mx-4 btn-lg position-relative"><strong>Search by Pincode</strong></button>
+        <button id="state" onclick="collapse('collapse2')" class="btn btn-outline-light btn-lg position-relative"><strong>Search by State</strong></button>
+    </div>
+
+    <div id="collapse1" class="collapse card-body mb-2 text-dark">
+        <form name="pincode" method="post" action="{{url_for('pincode_availability')}}">
+
+            <div id="ye" class="input mt-2 mb-3">
+                <input id="pcodeName" type="number" class="form-control" name="pincode" placeholder="Enter Pincode" required>
+            </div>
+            <button name="submit" value="submit_pincode" type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+
+    <div id="collapse2" class="collapse card-body mb-2 text-dark">
+        <form name="state" method="post" action="{{url_for('state_district_availability')}}">
+            <div class="mt-2 mb-3">
+                <input type="hidden" name="state" id="hiddenstate" value=""/>
+                <select onchange="populateSecond()" id="stateselect" name="stateselect" class="form-select mb-2" required>
+                <option selected>Select State</option>
+                {% for state,districts in state_district_details.items() %}
+                    <option value="{{state}}_{{districts}}">{{state}}</option>
+                {% endfor %}
+                </select>
+                <select id="districtselect" class="form-select" name="districtselect">
+                <option selected>Select District</option>
+                </select>
+            </div>
+            <button name="submit" value="state" type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+
+</div>
+{% endblock body %}

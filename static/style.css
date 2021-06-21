@@ -1,0 +1,122 @@
+.container{
+position: absolute;
+left: 30%;
+width: 35%;
+top: 20%;
+text-align: center;
+}
+.container .card-body{
+position: absolute;
+top: 100px;
+width: 400px;
+align-items: center;
+}
+
+.container .card-body{
+position: absolute;
+top: 100px;
+width: 400px;
+align-items: center;
+left: 20%;
+transition: 2.5s ease-in-out;
+}
+
+.container .card-body .input{
+  transition: 0.5s;
+  font-size: 1.6rem;
+}
+
+.styled-table {
+    border-collapse: separate;
+    margin: 10px;
+    font-size: 0.9em;
+    font-family: system-ui;
+    border: 2px solid #009879;
+    border-radius:18px;
+    -moz-border-radius:18px;
+}
+.styled-table thead tr {
+    background-color: #009879;
+    color: #ffffff;
+}
+.styled-table th{
+    padding: 8px 25px;
+    font-size: 1.1em;
+}
+
+.styled-table th:first-child{
+  border-radius:16px 0 0 0;
+}
+
+.styled-table th:last-child{
+  border-radius:0 16px 0 0;
+}
+
+.styled-table td {
+    border-collapse: collapse;
+    border-radius:3px;
+    -moz-border-radius:3px;
+    padding: 8px 25px;
+}
+
+.styled-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.styled-table tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+}
+.styled-table tbody tr:hover {
+    font-weight: bold;
+    color: #000000;
+    font-size: 1em;
+    background-color: #f8f9fa;
+    line-height: 35px;
+}
+.container-table{
+position: relative;
+left: 0%;
+width: 100%;
+top: 25%;
+text-align: center;
+padding: 0px 0px 10px 200px;
+}
+.container-table .card-body{
+position: absolute;
+top: 100px;
+width: 400px;
+align-items: center;
+left: 12%;
+transition: 1.8s ease-in-out;
+}
+.container-table .card-body .input i {
+  line-height: 55px;
+  color: black;
+  transition: 0.5s;
+  font-size: 1.1rem;
+}
+
+.filter-btns {
+    margin: 0 28%;
+
+}
+.filter-btns .covi, .free{
+  margin: 0 0 0 10%;
+}
+
+body{
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 100%;
+
+}
+.footer{
+font-weight: bold;
+background-color: white;
+text-align: center;
+position: fixed;
+bottom: 0;
+width: 100%;
+height: 3%;
+left: -0.4%;
+}

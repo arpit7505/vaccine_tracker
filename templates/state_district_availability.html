@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+{% block body%}
+
+<script>
+/*document.addEventListener("DOMContentLoaded",
+         setTimeout(function(event) {
+            document.createElement('form').submit.call(document.getElementById('state_district'));
+         }, 10000));
+*/
+</script>
+
+<div class="heading text-light my-3 mb-3" style="text-align: center;"><h3><strong>Available Slots</strong></h3></div>
+<div class="filter-btns">
+<input type="radio" onclick="filter()" class="btn-check" id="18plus" name="age" value="18" autocomplete="off">
+<label class="btn btn-outline-primary" for="18plus">18 +</label>
+
+<input type="radio" onclick="filter()" class="btn-check" id="45plus" name="age" value="45" autocomplete="off">
+<label class="btn btn-outline-primary age" for="45plus">45 +</label>
+
+<input type="radio" onclick="filter()" class="btn-check" id="Covisheild" name="vaccine" value="COVISHIELD" autocomplete="off">
+<label class="btn btn-outline-primary covi" for="Covisheild">Covisheild</label>
+
+<input type="radio" onclick="filter()" class="btn-check" id="cova" name="vaccine" value="Covaxin" autocomplete="off">
+<label class="btn btn-outline-primary" style="margin:6px;width:87px" for="cova"> Covaxin </label>
+
+<input type="radio" onclick="filter()" class="btn-check" id="Free" name="fees" value="Free" autocomplete="off">
+<label class="btn btn-outline-primary free" for="Free">Free</label>
+
+<input type="radio" onclick="filter()" class="btn-check" id="paid" name="fees" value="Paid" autocomplete="off">
+<label class="btn btn-outline-primary" for="paid">Paid</label>
+</div>
+
+<!--div>
+        <input onkeyup="fu()" autocomplete='off' class='filter' name='name' placeholder="Search" data-col='name'>
+        <input autocomplete='off' class='filter' name='name' placeholder="Search" data-col='code'>
+        <input autocomplete='off' class='filter' name='name' placeholder="Search" data-col='date'>
+        <input autocomplete='off' class='filter' name='name' placeholder="Search" data-col='dosea'>
+        <input autocomplete='off' class='filter' name='name' placeholder="Search" data-col='doseb'>
+        <input autocomplete='off' class='filter' name='name' placeholder="Search" data-col='type'>
+    </div-->
+<div class="container-table">
+    <table id="myTable" class="styled-table text-light">
+      <thead>
+          <th style="text-align:left;width:25%;" scope="col">Center Name</th>
+          <th scope="col">PinCode</th>
+          <th scope="col">Date</th>
+          <th scope="col">Dose 1</th>
+          <th scope="col">Dose 2</th>
+          <th scope="col">Minimum Age</th>
+          <th style="text-align:left;width:15%;" scope="col">Vaccine</th>
+          <th scope="col">Fee Type</th>
+      </thead>
+      <tbody>
+            {% if slotinfo=='No slots available'%}
+                <tr>
+                    <td colspan="8"><p>{{slotinfo}}...</p></td>
+                </tr>
+
+            {% else %}
+                {% for value in slotinfo %}
+                   <tr>
+                     <td style="text-align:left;width:25%;" scope="col">{{value['name']}}</td>
+                     <td scope="col">{{value['pincode']}}</td>
+                     <td scope="col">{{value['date']}}</td>
+                     <td scope="col">{{value['dose1']}}</td>
+                     <td scope="col">{{value['dose2']}}</td>
+                     <td scope="col">{{value['min_age']}}</td>
+                     <td style="text-align:left;width:15%;" scope="col">{{value['vaccine']}}</td>
+                     <td scope="col">{{value['fee_type']}}</td>
+                   </tr>
+                {% endfor %}
+      </tbody>
+    </table>
+</div>
+<form id="state_district" class="invisible" name="state" method="post" action="{{url_for('state_district_availability')}}">
+    <div id="ye" class="input mt-2 mb-3">
+     <input id="state" value="{{state}}" class="form-control" name="state" placeholder="Enter Pincode">
+     <input id="districtselect" value="{{district}}" class="form-control" name="districtselect" placeholder="Enter Pincode">
+    </div>
+    <button id="hiddenbutton" onload="load()" onclick="alert('clicked')" name="submit" value="submit_pincode" type="submit" class="btn btn-primary">Submit</button>
+ </form>
+{% endif %}
+
+{% endblock body %}
+
+
