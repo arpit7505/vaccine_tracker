@@ -12,11 +12,8 @@ class FindSlot:
     def __init__(self):
         try:
             self.cowin = CoWinAPI()
-            print(self.cowin.get_states())
-            print(type(self.cowin.get_states()))
-            states = self.cowin.get_states()['states']
-            print(type(states), states)
-
+            self.states = json.load(open('config.json'))['states']
+            self.state_district_name = json.load(open('config.json'))['state_district_name']
             self.mailServer = smtplib.SMTP("smtp.gmail.com", 587)
             self.mailServer.starttls()
 
@@ -192,7 +189,7 @@ class FindSlot:
             print(e, 'in checkByStateDistrict')
 
 
-# run = FindSlot()
+run = FindSlot()
 # res, output = self.checkByPin('221005')
 # print(output)
 # res, output = self.checkByStateDistrict('Uttar Pradesh', 'Varanasi')
