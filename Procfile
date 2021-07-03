@@ -1,1 +1,1 @@
-web:gunicorn app:backend_flask heroku ps:scale web=1
+web: gunicorn wsgi:backend_flasks
