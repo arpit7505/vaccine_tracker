@@ -12,7 +12,7 @@ class FindSlot:
     def __init__(self):
         try:
             self.cowin = CoWinAPI()
-            self.states = self.cowin.get_states()['states']
+            print('hiii_hiii')
             self.mailServer = smtplib.SMTP("smtp.gmail.com", 587)
             self.mailServer.starttls()
 
@@ -165,8 +165,8 @@ class FindSlot:
 
     def checkByStateDistrict(self, state, district):
         try:
-
-            for st in self.states:
+            states = self.cowin.get_states()['states']
+            for st in states:
                 if str(st['state_name']) == state:
                     state_id = st['state_id']
             districts = self.cowin.get_districts(state_id)['districts']
