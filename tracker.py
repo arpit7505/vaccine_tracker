@@ -12,9 +12,11 @@ class FindSlot:
     def __init__(self):
         try:
             self.cowin = CoWinAPI()
+            print(self.cowin.get_states())
+            print(type(self.cowin.get_states()))
             states = self.cowin.get_states()['states']
             print(type(states), states)
-            print(type(self.cowin.get_states()))
+
             self.mailServer = smtplib.SMTP("smtp.gmail.com", 587)
             self.mailServer.starttls()
 
