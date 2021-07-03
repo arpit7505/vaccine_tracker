@@ -166,6 +166,8 @@ class FindSlot:
     def checkByStateDistrict(self, state, district):
         try:
             states = self.cowin.get_states()['states']
+            print(states)
+            print(self.cowin.get_states())
             for st in states:
                 if str(st['state_name']) == state:
                     state_id = st['state_id']
