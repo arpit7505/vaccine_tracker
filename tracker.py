@@ -22,8 +22,8 @@ class FindSlot:
     def get_state_district_details(self):
         try:
             stateDict = {}
-            for i in run.cowin.get_states()['states']:
-                for j in run.cowin.get_districts(i['state_id'])['districts']:
+            for i in self.cowin.get_states()['states']:
+                for j in self.cowin.get_districts(i['state_id'])['districts']:
                     if str(i['state_name']) not in stateDict.keys():
                         stateDict[i['state_name']] = [j['district_name']]
                     else:
@@ -151,9 +151,9 @@ class FindSlot:
     def checkByPin(self, pincode):
         try:
 
-            slotAvailable = run.getCentersByPincode([str(pincode)])
+            slotAvailable = self.getCentersByPincode([str(pincode)])
             if len(slotAvailable) > 0:
-                detailDict = run.getSlotInfo(slotAvailable)
+                detailDict = self.getSlotInfo(slotAvailable)
                 return True, detailDict
 
             else:
@@ -174,9 +174,9 @@ class FindSlot:
                 if str(ds['district_name']) == district:
                     district_id = ds['district_id']
 
-            slotAvailable = run.getCentersByDistrict(state_id, district_id)
+            slotAvailable = self.getCentersByDistrict(state_id, district_id)
             if len(slotAvailable) > 0:
-                detailDict = run.getSlotInfo(slotAvailable)
+                detailDict = self.getSlotInfo(slotAvailable)
                 return True, detailDict
 
             else:
@@ -187,16 +187,16 @@ class FindSlot:
             print(e, 'in checkByStateDistrict')
 
 
-run = FindSlot()
-# res, output = run.checkByPin('221005')
+# run = FindSlot()
+# res, output = self.checkByPin('221005')
 # print(output)
-# res, output = run.checkByStateDistrict('Uttar Pradesh', 'Varanasi')
+# res, output = self.checkByStateDistrict('Uttar Pradesh', 'Varanasi')
 # print(output)
 
 # while (True):
 #     mailBody = ''
 #     try:
-#         res, output = run.checkByStateDistrict('Uttar Pradesh', 'Varanasi')
+#         res, output = self.checkByStateDistrict('Uttar Pradesh', 'Varanasi')
 #         for op in output:
 #             if op['vaccine'] == 'COVAXIN' and op['min_age'] == 45 and op['date'] == '15-06-2021':
 #                 mailBody += str(op)
@@ -215,9 +215,9 @@ run = FindSlot()
 
 # while (True):
 #     mailBody=''
-#     slotAvailable=run.getCentersByPincode(['221005','221008'])
+#     slotAvailable=self.getCentersByPincode(['221005','221008'])
 #     if len(slotAvailable)>0:
-#         detailDict=run.getSlotInfo(slotAvailable)
+#         detailDict=self.getSlotInfo(slotAvailable)
 #         for val in detailDict:
 #             json_object = json.dumps(val, indent = 4)
 #             mailBody=mailBody+json_object
