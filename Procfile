@@ -1,1 +1,1 @@
-web:gunicorn app:backend_flask
+web: python __init__.py
